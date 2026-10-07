@@ -33,7 +33,7 @@ public class JogoDaVelha {
         tabuleiro.marcarJogada(jogador1.getSimbolo(),local);
         tabuleiro.setJogadorDaVez(2);
         tabuleiro.mostrarTabuleiro();
-        tabuleiro.verificarGanhador(jogador1.getSimbolo(), local);
+        tabuleiro.verificarGanhador(jogador1.getSimbolo(), jogador1.getNome());
     }
     else{
         System.out.println("Jogador 2, escolhe onde jogar:");
@@ -42,7 +42,7 @@ public class JogoDaVelha {
         tabuleiro.marcarJogada(jogador2.getSimbolo(), local);
         tabuleiro.setJogadorDaVez(1);
         tabuleiro.mostrarTabuleiro();
-        tabuleiro.verificarGanhador(jogador2.getSimbolo(), local);
+        tabuleiro.verificarGanhador(jogador2.getSimbolo(), jogador2.getNome());
     }
      
       }while(tabuleiro.isHouveGanhadorUltimaRodada() == false);
