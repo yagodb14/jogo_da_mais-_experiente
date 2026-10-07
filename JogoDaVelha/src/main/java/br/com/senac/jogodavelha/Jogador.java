@@ -9,7 +9,7 @@ package br.com.senac.jogodavelha;
  * @author yago62977756
  */
 public class Jogador {
-     private int numero;
+    private int numero;
     private String nome;
     private char simbolo;
 

@@ -65,7 +65,7 @@ public class Tabuleiro {
         
     }
     
-    public void verificarGanhador(){
+    public void verificarGanhador(char simbolo, String nome){
       if (a1 == simbolo && b1 == simbolo && c1 == simbolo){
           this.houveGanhadorUltimaRodada = true;
       }else if (a2 == simbolo && b2 == simbolo && c2 == simbolo){
@@ -82,9 +82,12 @@ public class Tabuleiro {
           this.houveGanhadorUltimaRodada = true;
       }else if (c1 == simbolo && b2 == simbolo && a3 == simbolo){
           this.houveGanhadorUltimaRodada = true;
-          
       }
               
+      if(this.houveGanhadorUltimaRodada == true){
+          System.out.println("Parabéns ganhador(a) " + nome);
+      }
+      
     }
     
     public void organizar(){
