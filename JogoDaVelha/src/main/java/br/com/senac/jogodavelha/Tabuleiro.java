@@ -14,7 +14,10 @@ public class Tabuleiro {
     private String regras;
     private boolean houveGanhadorUltimaRodada;
     private int jogadorDaVez;
-    private char a1 = ' ', a2 = ' ', a3 = ' ', b1 = ' ', b2 = ' ', b3 = ' ',c1 = ' ', c2 = ' ', c3 = ' ';
+    private char a1 = ' ', a2 = ' ', a3 = ' ';
+    private char b1 = ' ', b2 = ' ', b3 = ' ';
+    private char c1 = ' ', c2 = ' ', c3 = ' ';
+    
 
     public int getNotaJ1() {
         return notaJ1;
@@ -55,6 +58,7 @@ public class Tabuleiro {
     public void setJogadorDaVez(int jogadorDaVez) {
         this.jogadorDaVez = jogadorDaVez;
     }
+    
     
     public Tabuleiro(String regras){
         this.regras = regras;
@@ -103,88 +107,65 @@ public class Tabuleiro {
             +         +   
  -----------+---------+--------               
 2           +         +     
-        %c   +   %c    +   %c 
+        %c   +   %c     +   %c 
             +         +    
  -----------+---------+--------              
 3           +         +     
-       %c    +    %c     +   %c 
+       %c    +    %c    +   %c 
             +         +    
     """, a1, b1, c1, a2, b2, c2, a3, b3, c3 );
  }
     
-    public void marcarJogada(char simbolo, String coordenada ){
-        switch (coordenada){
+    public boolean marcarJogada(char simbolo, String coordenada ){
+        switch (coordenada.trim().toUpperCase()){
             case "A1":
-                this.a1 = simbolo;
-               break;
+               if(a1 != ' ') break;
+                a1 = simbolo;
+              return true;
                
             case "A2":
-                this.a2 = simbolo;
-               break;
+               if(a2 != ' ')break;
+                 a2 = simbolo;
+               return true;
                
             case "A3":
-                this.a3 = simbolo;
-               break;
+                if (a3 != ' ')break;
+                a3 = simbolo;
+                return true;
                
             case "B1":
-                this.b1 = simbolo;
-               break;
+               if(b1 != ' ')break;
+               b1 = simbolo;
+               return true;
                
             case "B2":
-                this.b2 = simbolo;
-               break;
+               if (b2 != ' ') break;
+               b2 = simbolo;
+               return true;
                
             case "B3":
-                this.b3 = simbolo;
-               break;
+                if( b3 != ' ')break;
+                b3 = simbolo;
+                return true;
                
             case "C1":
-                this.c1 = simbolo;
-               break;
-               
+                if (c1 != ' ') break;
+                c1 = simbolo;
+                return true;
+                
             case "C2":
-                this.c2 = simbolo; 
-               break;
+               if (c2 != ' ') break;
+               c2 = simbolo;
+               return true;
                
             case "C3":
-                this.c3 = simbolo;
-               break; 
+                if (c3 != ' ') break;
+                c3 = simbolo;
+                return true;
                 
-               case "a1":
-                this.a1 = simbolo;
-               break;
-               
-            case "a2":
-                this.a2 = simbolo;
-               break;
-               
-            case "a3":
-                this.a3 = simbolo;
-               break;
-               
-            case "b1":
-                this.b1 = simbolo;
-               break;
-               
-            case "b2":
-                this.b2 = simbolo;
-               break;
-               
-            case "b3":
-                this.b3 = simbolo;
-               break;
-               
-            case "c1":
-                this.c1 = simbolo;
-               break;
-               
-            case "c2":
-                this.c2 = simbolo; 
-               break;
-               
-            case "c3":
-                this.c3 = simbolo;
-               break; 
-        }
-    }
+        }         
+                System.out.println("Posição ocupada ou inválida, escolha outra"); 
+                return false;
+     
+  }
 }

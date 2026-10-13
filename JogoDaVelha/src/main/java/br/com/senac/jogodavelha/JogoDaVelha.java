@@ -26,25 +26,45 @@ public class JogoDaVelha {
   do{
     tabuleiro.mostrarTabuleiro();
     
-    if(tabuleiro.getJogadorDaVez() == 1){
-        System.out.println("Jogador 1, escolhe onde jogar:");
-        String local = entrada.nextLine();
-        
-        tabuleiro.marcarJogada(jogador1.getSimbolo(),local);
-        tabuleiro.setJogadorDaVez(2);
+     if (tabuleiro.getJogadorDaVez() == 1) {
+                System.out.println("Jogador 1, escolha onde jogar: ");
+            } else {
+                System.out.println("Jogador 2, escolha onde jogar: ");
+            }
+
+            String local = entrada.nextLine();
+            boolean jogadaValida;
+
+            if (tabuleiro.getJogadorDaVez() == 1) {
+                jogadaValida = tabuleiro.marcarJogada(
+                    jogador1.getSimbolo(), local
+                );
+            } else {
+                jogadaValida = tabuleiro.marcarJogada(
+                    jogador2.getSimbolo(), local
+                );
+            }
+
+            if (jogadaValida) {
+                if (tabuleiro.getJogadorDaVez() == 1) {
+                    tabuleiro.verificarGanhador(jogador1.getSimbolo(), local);
+                } else {
+                    tabuleiro.verificarGanhador(jogador2.getSimbolo(), local);
+                }
+                
+                if (!tabuleiro.isHouveGanhadorUltimaRodada()) {
+                    if (tabuleiro.getJogadorDaVez() == 1) {
+                        tabuleiro.setJogadorDaVez(2);
+                    } else {
+                        tabuleiro.setJogadorDaVez(1);
+                    }
+                }
+            }
+
+        } while (!tabuleiro.isHouveGanhadorUltimaRodada());
+
         tabuleiro.mostrarTabuleiro();
-        tabuleiro.verificarGanhador(jogador1.getSimbolo(), jogador1.getNome());
-    }
-    else{
-        System.out.println("Jogador 2, escolhe onde jogar:");
-        String local = entrada.nextLine();
-        
-        tabuleiro.marcarJogada(jogador2.getSimbolo(), local);
-        tabuleiro.setJogadorDaVez(1);
-        tabuleiro.mostrarTabuleiro();
-        tabuleiro.verificarGanhador(jogador2.getSimbolo(), jogador2.getNome());
-    }
-     
-      }while(tabuleiro.isHouveGanhadorUltimaRodada() == false);
+        tabuleiro.isHouveGanhadorUltimaRodada();
+        entrada.close();
     }
 }
